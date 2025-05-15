@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import Menu from "../layouts/SideMenu";
 import DashboardOverview1 from "../pages/DashboardOverview1";
-import MenuViewUser from "../pages/menu/menuViewUser";
+import MenuViewPage from "../pages/menu/menuViewPage";
 import Login from "../pages/auth/login";
 import Register from "../pages/auth/register";
 import ErrorPage from "../pages/ErrorPage";
@@ -20,7 +20,7 @@ function Router() {
     },
     {
       path: "/",
-      element: <MenuViewUser />,
+      element: <MenuViewPage />,
     },
     {
       path: "/login",
