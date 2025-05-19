@@ -14,13 +14,14 @@ import { selectDarkMode } from "../../stores/darkModeSlice";
 import { useAppSelector } from "../../stores/hooks";
 import { FormattedMenu, linkTo, nestedMenu, enter, leave } from "./side-menu";
 import Lucide from "../../base-components/Lucide";
-import logoUrl from "../../assets/images/logo.svg";
-import logoDarkUrl from "../../assets/images/logo-dark.svg";
+import logoUrl from "../../assets/images/logo/logo_kopkarla_white.png";
+import logoDarkUrl from "../../assets/images/logo/logo_kopkarla_color.png";
 import clsx from "clsx";
 import TopBar from "../../components/TopBar";
 import DarkModeSwitcher from "../../components/DarkModeSwitcher";
 import MainColorSwitcher from "../../components/MainColorSwitcher";
 import SimpleBar from "simplebar";
+import { handleLogoutAuth, getMeData } from "../../features/auth/auth";
 
 function Main() {
   const location = useLocation();
@@ -36,9 +37,9 @@ function Main() {
   }, [sideMenuStore, location.pathname]);
 
   const [simpleMenu, setSimpleMenu] = useCallbackState({
-    active: false,
+    active: true,
     hover: false,
-    wrapper: false,
+    wrapper: true,
   });
   const [mobileMenu, setMobileMenu] = useState(false);
   const scrollableRef = createRef<HTMLDivElement>();
@@ -125,6 +126,9 @@ function Main() {
     setFormattedMenu(sideMenu());
   }, [sideMenuStore, location.pathname]);
 
+  const logout = handleLogoutAuth();
+  const getMe = getMeData();
+
   return (
     <div className="flex h-screen xl:pl-5 xl:py-5">
       <DarkModeSwitcher />
@@ -132,7 +136,7 @@ function Main() {
       {/* BEGIN: Side Menu */}
       <nav
         className={clsx([
-          "absolute z-[52] xl:z-auto -ml-[100%] xl:ml-0 transition-[width,margin-left] w-[270px] h-full flex flex-col pl-6 pr-2 overflow-hidden duration-300 ease-in-out xl:rounded-l-xl",
+          "absolute z-[52] xl:z-[52] -ml-[100%] xl:ml-0 transition-[width,margin-left] w-[270px] h-full flex flex-col pl-6 pr-2 overflow-hidden duration-300 ease-in-out xl:rounded-l-xl",
           "xl:before:visible before:opacity-0 xl:before:opacity-100 before:z-[-2] xl:before:z-auto before:bg-black/60 xl:before:bg-transparent before:transition-opacity xl:before:transition-none before:duration-300 before:ease-in-out before:content-[''] before:fixed xl:before:absolute before:inset-0 before:blur-md before:bg-cover before:grayscale before:xl:bg-[url('../../assets/images/backgrounds/bg-main.jpg')] before:bg-no-repeat before:-m-5",
           "after:w-full xl:after:w-auto after:h-screen xl:after:h-auto after:dark:bg-darkmode-800 xl:after:dark:bg-primary/50 after:content-[''] after:absolute after:inset-0 after:opacity-100 xl:after:opacity-90 after:bg-slate-50 xl:after:bg-primary/50 after:xl:bg-gradient-to-b after:from-slate-50/90 after:via-white/70 after:to-white/90 after:dark:from-darkmode-800/90 after:dark:via-darkmode-700/60 after:dark:to-darkmode-700/80",
           {
@@ -187,7 +191,7 @@ function Main() {
                     "xl:opacity-0 transition-opacity duration-200 ease-in-out",
                 ])}
               >
-                Lucent
+                Kopkarla
               </span>
             </Link>
             <a
@@ -377,7 +381,11 @@ function Main() {
             { "xl:pr-1": simpleMenu.wrapper },
           ])}
         >
-          <TopBar toggleMobileMenu={toggleMobileMenu} />
+          <TopBar 
+            toggleMobileMenu={toggleMobileMenu} 
+            logout={logout.handleLogout}
+            getMe={getMe}
+            />
           <div className="xl:px-6 mt-2.5">
             <Outlet />
           </div>
