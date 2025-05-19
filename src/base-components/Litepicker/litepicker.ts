@@ -2,20 +2,6 @@ import dayjs from "dayjs";
 import Litepicker from "litepicker";
 import { LitepickerElement, LitepickerProps } from "./index";
 
-interface Picker extends Litepicker {
-  on?: (
-    event: string,
-    cb: (
-      startDate: {
-        dateInstance: Date;
-      },
-      endDate: {
-        dateInstance: Date;
-      }
-    ) => void
-  ) => {};
-}
-
 const getDateFormat = (format: string | undefined) => {
   return format !== undefined ? format : "D MMM, YYYY";
 };
@@ -38,9 +24,9 @@ const init = (el: LitepickerElement, props: LitepickerProps) => {
     ...props.options,
     element: el,
     format: format,
-    setup: (picker: Picker) => {
+    setup: (picker: any) => {
       if (picker.on) {
-        picker.on("selected", (startDate, endDate) => {
+        picker.on("selected", (startDate : Date | any, endDate : Date | any) => {
           let date = dayjs(startDate.dateInstance).format(format);
           date +=
             endDate !== undefined
