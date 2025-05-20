@@ -87,7 +87,7 @@ const updateValue = (
     clonedEl.TomSelect.options
   )) {
     if (
-      !getOptions(originalEl.children).filter((optionEl :any) => {
+      !getOptions(originalEl.children).filter((optionEl : any | unknown) => {
         return (
           optionEl instanceof HTMLOptionElement &&
           optionEl.value === option.value
