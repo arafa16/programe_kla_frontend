@@ -42,7 +42,7 @@ type AlertProps<C extends React.ElementType> = PolymorphicComponentPropWithRef<
 
 type AlertComponent = <C extends React.ElementType = "div">(
   props: AlertProps<C>
-) => React.ReactElement | null;
+) => React.ReactElement | any | null;
 
 const Alert: AlertComponent | any = forwardRef(
   <C extends React.ElementType>(
