@@ -1,5 +1,5 @@
 import { TomSelectProps, TomSelectElement } from "./index";
-import { TomSettings, RecursivePartial } from "tom-select/src/types/index";
+// import { TomSettings, RecursivePartial } from "tom-select/src/types/index";
 import TomSelect from "tom-select";
 import _ from "lodash";
 
@@ -29,7 +29,7 @@ const init = (
   originalEl: TomSelectElement,
   clonedEl: TomSelectElement,
   props: TomSelectProps,
-  computedOptions: RecursivePartial<TomSettings>
+  computedOptions: any 
 ) => {
   // On option add
   if (Array.isArray(props.value)) {
@@ -80,7 +80,7 @@ const updateValue = (
   clonedEl: TomSelectElement,
   value: string | string[],
   props: TomSelectProps,
-  computedOptions: RecursivePartial<TomSettings>
+  computedOptions: any
 ) => {
   // Remove old options
   for (const [optionKey, option] of Object.entries(
