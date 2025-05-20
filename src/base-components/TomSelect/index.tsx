@@ -1,6 +1,6 @@
 import { createRef, useEffect } from "react";
 import { setValue, init, updateValue } from "./tom-select";
-import { TomSettings, RecursivePartial } from "tom-select/src/types/index";
+// import { TomSettings, RecursivePartial } from "tom-select/src/types/index";
 import TomSelectPlugin from "tom-select";
 import { useRef, useMemo } from "react";
 import clsx from "clsx";
@@ -19,7 +19,7 @@ export interface TomSelectProps
   onChange(
     value: React.SetStateAction<string> | React.SetStateAction<string[]>
   ): void;
-  options: RecursivePartial<TomSettings>;
+  options: any;
   getRef: (el: TomSelectElement) => void;
 }
 
