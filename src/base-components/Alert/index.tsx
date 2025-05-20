@@ -29,7 +29,7 @@ type AlertProps<C extends React.ElementType> = PolymorphicComponentPropWithRef<
   C,
   {
     children:
-      | React.ReactNode
+      | React.ReactNode | any
       | ((props: { dismiss: () => void }) => JSX.Element);
     dismissible?: boolean;
     variant?: Variant;

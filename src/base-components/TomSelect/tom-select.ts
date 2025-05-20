@@ -87,7 +87,7 @@ const updateValue = (
     clonedEl.TomSelect.options
   )) {
     if (
-      !getOptions(originalEl.children).filter((optionEl) => {
+      !getOptions(originalEl.children).filter((optionEl :any) => {
         return (
           optionEl instanceof HTMLOptionElement &&
           optionEl.value === option.value
@@ -116,7 +116,7 @@ const updateValue = (
     [
       ...Array.from(originalEl.classList),
       ...Array.from(clonedEl.TomSelect.wrapper.classList).filter(
-        (className) => initialClassNames?.indexOf(className) == -1
+        (className:any) => initialClassNames?.indexOf(className) == -1
       ),
     ].join(" ")
   );
