@@ -14,7 +14,7 @@ const menuViewPage = () => {
         <div className="box relative border-transparent bg-blue-400 bg-opacity-20 dark:bg-darkmode-600 intro-y md:w-full min-h-full">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-y-16 gap-x-16 px-12 pt-24 md:pt-12 pb-48 md:pb-12 justify-items-center">
             {/* BEGIN: Menu Content */}
-            {menuData.map((item:any) => (
+            {menuData && menuData.map((item:any) => (
               <div key={item.id} className="bg-white p-5 rounded-md shadow-lg grid grid-cols-1 min-h-[200px] w-[250px]">
                 <div className="text-lg text-center mb-4 w-full">
                   <img src={import.meta.env.VITE_REACT_APP_API_URL+item.logo_file_link} alt={item.logo_file_link} className="w-16 h-16 mx-auto mb-2" />
