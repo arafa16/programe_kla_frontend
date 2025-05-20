@@ -40,11 +40,11 @@ type Variant =
 //   }
 // >;
 
-type AlertComponent = <C extends React.ElementType = "div">(
-  props: any
-) => React.ReactElement | any | null;
+// type AlertComponent = <C extends React.ElementType = "div">(
+//   props: any
+// ) => React.ReactElement | any | null;
 
-const Alert: AlertComponent | any = forwardRef(
+const Alert: any = forwardRef(
   <C extends React.ElementType>(
     { as, dismissible, variant, ...props }: any,
     ref?: PolymorphicRef<C>
