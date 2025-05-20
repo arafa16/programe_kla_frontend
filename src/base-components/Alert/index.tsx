@@ -25,28 +25,28 @@ type Variant =
   | "soft-danger"
   | "soft-dark";
 
-type AlertProps<C extends React.ElementType> = PolymorphicComponentPropWithRef<
-  C,
-  {
-    children:
-      | React.ReactNode | any
-      | ((props: { dismiss: () => void }) => JSX.Element);
-    dismissible?: boolean;
-    variant?: Variant;
-    onShow?: () => {};
-    onShown?: () => {};
-    onHide?: () => {};
-    onHidden?: () => {};
-  }
->;
+// type AlertProps<C extends React.ElementType> = PolymorphicComponentPropWithRef<
+//   C,
+//   {
+//     children:
+//       | React.ReactNode | any
+//       | ((props: { dismiss: () => void }) => JSX.Element);
+//     dismissible?: boolean;
+//     variant?: Variant;
+//     onShow?: () => {};
+//     onShown?: () => {};
+//     onHide?: () => {};
+//     onHidden?: () => {};
+//   }
+// >;
 
 type AlertComponent = <C extends React.ElementType = "div">(
-  props: AlertProps<C>
+  props: any
 ) => React.ReactElement | any | null;
 
 const Alert: AlertComponent | any = forwardRef(
   <C extends React.ElementType>(
-    { as, dismissible, variant, ...props }: AlertProps<C>,
+    { as, dismissible, variant, ...props }: any,
     ref?: PolymorphicRef<C>
   ) => {
     const [show, setShow] = useState<boolean>(true);
